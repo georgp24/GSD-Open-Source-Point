@@ -1,0 +1,16 @@
+{|s, t, o, oDlg|
+ //testweise Kopie der Lieferantentabelle in die Tabelle FiStapel
+cSQL := "DROP TABLE if exists SQLframe_LG.dbo._LG_FiStapel",
+gsdtrace('cSQL: %1', cSQL),
+nRet := GetSchema():Execute(cSQL),
+gsdtrace('nRet: %1', nRet),
+
+cSQL := "IF OBJECT_ID('dbo._LG_Lieferanten', 'U') IS NOT NULL " + 
+"SELECT * INTO SQLframe_LG.dbo._LG_FiStapel FROM SQLframe_LG.dbo._LG_Lieferanten",
+gsdtrace('cSQL: %1', cSQL),
+nRet := GetSchema():Execute(cSQL),
+gsdtrace('nRet: %1', nRet),
+UserMessageBox("%1 Zeilen aus Tabelle _LG_Lieferanten in Tabelle _LG_FiStapel kopiert",ltrim(str(nRet)))
+//für temporäre Tabellen:
+//if OBJECT_ID('tempdb..#test') is not null
+}
