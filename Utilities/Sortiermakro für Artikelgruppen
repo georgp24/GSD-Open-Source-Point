@@ -1,0 +1,3 @@
+{|oBrw,lDescend,oOwner| 
+"right('00000'+ltrim(rtrim(Artikelgruppennr)),5)" + if(lDescend,"DESC","ASC")
+}
